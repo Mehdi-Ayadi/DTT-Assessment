@@ -1,0 +1,67 @@
+const data = [{
+  houseName: 'Stokvisstraat132',
+  image: '../assets/images/home-banner-2020-02-min.png',
+  price: '500§',
+  bedrooms: 1,
+  bathrooms: 1,
+  size: 1,
+  streetName: 'Overtoom',
+  houseNumber: 21,
+  numberAddition: 1,
+  zip: '1181TY',
+  city: 'Amsterdam',
+  constructionYear: 1960,
+  hasGarage: false,
+  description: 'Nice house!'
+},
+{
+  houseName: 'Stokvisstraat132',
+  image: '../assets/images/home-banner-2020-02-min.png',
+  price: '500§',
+  bedrooms: 1,
+  bathrooms: 1,
+  size: 1,
+  streetName: 'Overtoom',
+  houseNumber: 21,
+  numberAddition: 1,
+  zip: '1181TY',
+  city: 'London',
+  constructionYear: 1960,
+  hasGarage: false,
+  description: 'Nice house!'
+},
+{
+  houseName: 'Stokvisstraat132',
+  image: '../assets/images/home-banner-2020-02-min.png',
+  price: '500§',
+  bedrooms: 1,
+  bathrooms: 1,
+  size: 1,
+  streetName: 'Overtoom',
+  houseNumber: 21,
+  numberAddition: 1,
+  zip: '1181TY',
+  city: 'Utrecht',
+  constructionYear: 1960,
+  hasGarage: false,
+  description: 'Nice house!'
+},
+{
+  houseName: 'Stokvisstraat132',
+  image: '../assets/images/home-banner-2020-02-min.png',
+  price: '500§',
+  bedrooms: 1,
+  bathrooms: 1,
+  size: 1,
+  streetName: 'Overtoom',
+  houseNumber: 21,
+  numberAddition: 1,
+  zip: '1181TY',
+  city: 'Amsterdam',
+  constructionYear: 1960,
+  hasGarage: false,
+  description: 'Nice house!'
+}
+]
+
+export default data;
