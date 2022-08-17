@@ -1,33 +1,26 @@
 <template>
   <ul>
-    <li v-for="(Houses, i) in Houses" :key="i">
+    <li>
       <div class="card">
         <div class="row">
           <div class="innerLeft">
             <img
               class="imgCardRecom"
-              src="../assets/images/img_placeholder_house@3x.png"
+              v-bind:src="item.image"
             />
           </div>
           <div class="innerRight">
             <div class="horizontal-card-footer">
-              <h2 class="card-title-describtion1">{{ Houses.houseName }}</h2>
+              <h2 class="card-title-describtion1">{{ item.location.street }}</h2>
               <p></p>
-              <span class="card-text-describtion1">1011 AA Amsterdam</span>
+              <span class="card-text-describtion1">{{ item.location.zip }} {{ item.location.city }}</span>
               <p></p>
               <span class="card-price-describtion1"
-                ><img class="icon5" src="../assets/images/ic_bed@3x.png" />{{
-                  Houses.bedrooms
-                }}</span
-              >
+                ><img class="icon5" src="../assets/images/ic_bed@3x.png" />{{ item.bedroom }}</span>
               <span class="card-price-describtion1"
-                ><img class="icon5" src="../assets/images/ic_bath@3x.png" />{{
-                  Houses.bathrooms
-                }}</span
-              >
+                ><img class="icon5" src="../assets/images/ic_bath@3x.png" />{{ item.bathroom }}</span>
               <span class="card-price-describtion1"
-                ><img class="icon5" src="../assets/images/ic_size@3x.png" />120²</span
-              >
+                ><img class="icon5" src="../assets/images/ic_size@3x.png" />{{ item.size }}</span>
               <p></p>
             </div>
           </div>
@@ -38,17 +31,18 @@
 </template>
 
 <script>
-import style from "../assets/sass/styles.scss";
-import Resources from '../assets/Resources'
 
 export default {
-  name: "app",
+  props: ['item'],
   data: () => ({
     selection: 1,
     drawer: true,
-    Houses: Resources,
+    Houses: this.item
   }),
-};
+  mounted () {
+    console.log(this.item)
+  }
+}
 </script>
 
 <style>
@@ -125,6 +119,7 @@ ul {
   height: 15px;
   margin-right: 10px;
 }
+
 .horizontal-card-footer {
   line-height: 1.8;
 }

@@ -12,9 +12,9 @@
         <div class="table-responsive">
             <div v-if="resources.length > 0" class="table">
                 <div>
-                    <div v-for="(item, i) in resultQuery" :key="i">
+                    <div v-for="item in resultQuery" :key="i">
                         <div>
-                            <Cards v-bind:href="item.city" target="_blank">{{ item.city }}</Cards>
+                            <Cards v-bind:href="item" :item="item" target="_blank">{{item.price}}</Cards>
                         </div>
                     </div>
                 </div>
@@ -28,19 +28,34 @@
 
 <script>
 import Cards from './CardHouses.vue'
-import Resources from '../assets/Resources'
+import axios from 'axios'
+// import Resources from '../assets/Resources'
 
 export default ({
   name: 'Search',
   data () {
     return {
       searchQuery: null,
-      resources: Resources
-    };
+      resources: []
+    }
+  },
+  mounted () {
+    axios
+      .get('https://api.intern.d-tt.nl/api/houses',{
+        headers: {
+          'X-Api-Key': '_KwzeY0H3LysA1Qj9Icg-Gv5Xn2EPTrf'
+        }
+      })
+      .then(response => {
+        this.resources = response.data
+        console.log(response.data)
+      })
+      .catch(error => console.log(error))
   },
   computed: {
     resultQuery () {
-      if (this.searchQuery) {return this.resources.filter((item) => {return this.searchQuery.toLowerCase().split(' ').every(v => item.city.toLowerCase().includes(v)) }) } else if (this.searchQuery) { return null } else {
+      console.log(this.resources);
+      if (this.searchQuery) {return this.resources.filter((item) => {return this.searchQuery.toLowerCase().split(' ').every(v => item.price.toLowerCase().includes(v)) }) } else if (this.searchQuery) { return null } else {
         return this.resources
       }
     }

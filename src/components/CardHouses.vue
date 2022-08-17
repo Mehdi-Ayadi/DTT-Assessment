@@ -6,7 +6,7 @@
               <div class="card">
                 <div class="row">
                   <div class="innerLeft">
-                    <img class="imgCard" src="../assets/images/img_placeholder_house@3x.png"/>
+                    <img class="imgCard" v-bind:src="item.image"/>
                   </div>
                   <div class="innerRight">
                     <div class="horizontal-card-footer">
@@ -14,15 +14,15 @@
                         <img class="iconModify" src="../assets/images/ic_edit@3x.png" />
                       </router-link>
                       <img class="iconDelete" src="../assets/images/ic_delete@3x.png" />
-                      <h2 class="card-title">Stokvisstraat132</h2>
+                      <h2 class="card-title">{{ item.location.street }}</h2>
                       <p></p>
-                      <span class="card-price">500.00§</span>
+                      <span class="card-price">{{ item.price }}$</span>
                       <p></p>
-                      <span class="card-text">Amsterdam / Utrecht / London</span>
+                      <span class="card-text">{{ item.location.zip }}{{ item.location.city }}</span>
                       <p></p>
-                      <span class="cardDetails"><img class="iconCard" src="../assets/images/ic_bed@3x.png" />1</span>
-                      <span class="cardDetails"><img class="iconCard" src="../assets/images/ic_bath@3x.png" />1</span>
-                      <span class="cardDetails"><img class="iconCard" src="../assets/images/ic_size@3x.png" />120 m²</span>
+                      <span class="cardDetails"><img class="iconCard" src="../assets/images/ic_bed@3x.png" />{{ item.bedrooms}}</span>
+                      <span class="cardDetails"><img class="iconCard" src="../assets/images/ic_bath@3x.png" />{{ item.bathrooms }}</span>
+                      <span class="cardDetails"><img class="iconCard" src="../assets/images/ic_size@3x.png" />{{ item.size }}m²</span>
                       <p></p>
                     </div>
                   </div>
@@ -43,14 +43,16 @@
 </template>
 
 <script>
-import Resources from '../assets/Resources'
 export default {
-  name: 'app',
+  props: ['item'],
   data: () => ({
     selection: 1,
     drawer: true,
-    Houses: Resources
-  })
+    Houses: this.item
+  }),
+  mounted () {
+    console.log(this.item)
+  },
 }
 
 </script>
@@ -71,7 +73,7 @@ export default {
 }
 
 .card{
-  width: 69%;
+  width: 74%;
   border-radius: 5px;
   padding-top: 2%;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);

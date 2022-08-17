@@ -40,8 +40,8 @@
           <div style="margin-top: 20px; margin-bottom: 20px">
             <span class="BigText2">Recommended for you</span>
           </div>
-          <div class="smallCardsRecommended">
-            <SmallCards />
+          <div class="smallCardsRecommended" v-for="(item, i) in resources" :key="i">
+            <SmallCards v-bind:href="item" :item="item" target="_blank"></SmallCards>
           </div>
         </div>
       </div>
@@ -52,10 +52,30 @@
 <script>
 import SmallCards from "../components/smallCards.vue";
 import Back from "../components/Back.vue";
+import axios from "axios";
+
 export default {
   name: "HomeDescription",
-  components: { SmallCards, Back },
-};
+  data: () => ({
+    selection: 1,
+    drawer: true,
+    resources: []
+  }),
+  mounted () {
+    axios
+      .get('https://api.intern.d-tt.nl/api/houses',{
+        headers: {
+          'X-Api-Key': '_KwzeY0H3LysA1Qj9Icg-Gv5Xn2EPTrf'
+        }
+      })
+      .then(response => {
+        this.resources = response.data
+        console.log(response.data)
+      })
+      .catch(error => console.log(error))
+  },
+  components: { SmallCards, Back }
+}
 </script>
 
 <style>

@@ -16,10 +16,10 @@ export default {
 
 .Back{
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 1rem;
+  align-content: stretch;
   padding-left: 20px;
 }
 

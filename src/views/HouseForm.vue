@@ -1,9 +1,9 @@
-<template lang="">
+<template>
   <div class="Form1">
     <Back/>
     <div class="BigContainer" id="HouseDescribtion">
       <div style="display: inline-block;">
-            <div class="w3-container">
+            <div class="w3-container" v-on:submit.prevent="submitForm">
                 <div class="divContainer">
                     <h1 class="BigText3">Create new listing</h1>
                 </div>
@@ -44,10 +44,7 @@
                     </div>
                     <div class="divContainer">
                         <a class="titleForm2">Garage*</a>
-                        <select class="boxFormSmallMultiple" data-placeholder="Begin typing a name to filter..." size="2" multiple>
-                        <option class="titleForm4">Yes</option>
-                        <option class="titleForm4">No</option>
-                    </select>
+                        <input placeholder="Enter the house number" class="boxFormSmall"/>
                     </div>
                 </div>
                 <div class="columnContainer">
@@ -68,6 +65,9 @@
                     <h3 class="titleForm">Description*</h3>
                     <input placeholder="Enter description" class="boxFormDescription"/>
                 </div>
+                <div class="divContainer">
+                    <button class="button1">Submit</button>
+                </div>
             </div>
         </div>
     </div>
@@ -76,9 +76,44 @@
 
 <script>
 import Back from '../components/Back.vue'
+import axios from 'axios'
+
 export default {
-  components: { Back },
-};
+  name: 'List',
+  // data () {
+  //   return {
+  //     resources: []
+  //   };
+  // },
+  // mounted () {
+  //   axios
+  //     .get('https://api.intern.d-tt.nl/api/houses',{
+  //       headers: {
+  //         'X-Api-Key': '_KwzeY0H3LysA1Qj9Icg-Gv5Xn2EPTrf'
+  //       }
+  //     })
+  //     .then(response => {
+  //       this.resources = response.data
+  //       console.log(response.data)
+  //     })
+  //     .catch(error => console.log(error))
+  // },
+
+  // methods: {
+  //   submitForm () {
+  //     axios.post('https://api.intern.d-tt.nl/api/houses/:houseId', this.resources)
+  //       .then((res) => {
+  //         //Perform Success Action
+  //       })
+  //       .catch((error) => {
+  //         // error.response.status Check status code
+  //     }).finally(() => {
+  //         //Perform action in always
+  //       });
+  //   }
+  // },
+  components: { Back }
+}
 </script>
 
 <style>
